@@ -3,17 +3,17 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                bat "git clone https://github.com/ramakanta13/TestRepo"
+                bat "echo Checkoiut"
             }
         }
         stage('Test') { 
             steps {
-                bat "echo Hello"
+                bat "echo Test"
             }
         }
         stage('Deploy') { 
             steps {
-                bat "echo Hello"
+                bat "echo Deploy"
             }
         }
     }
