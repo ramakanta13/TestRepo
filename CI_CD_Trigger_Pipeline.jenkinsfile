@@ -1,0 +1,57 @@
+//@Library('jenkins-shared-lib') _
+
+pipeline{
+
+        agent any
+
+        parameters{
+                string(name: 'BRANCH', defaultValue: '', description: 'Repository branch')
+                string(name: 'REPO_URL', defaultValue: '', description: 'Repository URL')
+                string(name: 'CREATENTIAL_ID', defaultValue: '', description: 'Credential ID')
+                string(name: 'PROJECT_NAME', defaultValue: '', description: 'Repository project')
+                string(name: 'PULLREQUEST_NO', defaultValue: '', description: 'Repository pull request no')
+        }
+
+        stages{
+             stage('Bitbucket checkout'){
+                steps{
+                    echo "Bitbucket checkout"
+                    echo "Recieved following parameter values"
+                    echo "Branch : ${params.BRANCH}"
+                    echo "Repo URL : ${params.REPO_URL}"
+                    echo "Credential id : ${params.CREATENTIAL_ID}"
+                    //checkout command
+                    echo "Bitbucket checkout end !!!"
+                }
+             }
+            stage('SonarQube Scanner'){
+                steps{
+                  script{
+                        //get the create time and uptime
+                       /* if (commonHelper.isAfterLastBuildStartTime(createTime) || CommonHelper.isAfterLastBuildStartTime(uptime)){
+                        echo "Newly created or updated pull Request No : $id"
+                        pullRequestChangeMessage = bitbuckerHelper.getPullRequestChangeMessage(bitbucketUrl, projectName, repoName, bitbucketCredentialId, id, limit)
+                        isServiceChange = bitbuckerHelper.isServiceChangeInPullRequest(pullRequestChangeMessage)
+                        if (isServiceChange){
+                        */
+                                echo "Executing sonarQube when the serveice changed at bitbucket"
+                                echo "Branch name       : ${params.BRANCH}"
+                                echo "Project name      : ${params.PROJECT_NAME}"
+                                echo "Repo name         : ${params.REPO_URL}"
+                                echo "PullRequest No    : ${params.PULLREQUEST_NO}"
+                                if ( "${params.BRANCH}" != null && "${params.PROJECT_NAME}" != null && "${params.REPO_URL}" != null && "${params.PULLREQUEST_NO}" != null){
+                                /* // trigger the sonarQube scanner jenkins job
+                                build job: 'IndependentPipelines/SonarQube_Pipeline', parameters:
+                                        [ string(name: 'projectName', value: "${params.PROJECT_NAME}"),
+                                          string(name: 'brancName', value: "${params.BRANCH}"),
+                                          string(name: 'repoName', value: "${params.REPO_URL}"),
+                                          string(name: 'pullRequestNo', value: "${params.PULLREQUEST_NO}")]
+                                          */
+                                echo "SonarQube Scanncer execution end !!!"
+                                }
+                        }
+                    }
+                }
+       }
+ }
+ 

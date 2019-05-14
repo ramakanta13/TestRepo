@@ -1,4 +1,8 @@
-//program
+<<<<<<< HEAD
+//evenodd program
+=======
+// program
+>>>>>>> dfba7f99b2ccda37740e4821edd90a53cd7fafd5
 def call(int buildNumber) {
   if (buildNumber % 2 == 0) {
     pipeline {
