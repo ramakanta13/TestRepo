@@ -1,3 +1,4 @@
+//evenodd program
 def call(int buildNumber) {
   if (buildNumber % 2 == 0) {
     pipeline {
