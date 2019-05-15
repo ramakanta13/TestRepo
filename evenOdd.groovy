@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-//odd or even number program
-=======
-//program
->>>>>>> 28067e25baee866291be089517645fadc0466bbc
+//even and odd number program
 def call(int buildNumber) {
   if (buildNumber % 2 == 0) {
     pipeline {
